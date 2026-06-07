@@ -1,0 +1,57 @@
+# Team MOGU — Default Hyperparameters
+# All training parameters in one place. Loaded by train.py and evaluate.py.
+
+environment:
+  world: 1
+  stage: 1
+  action_type: "right_only"   # right_only | simple | complex
+  frame_skip: 4
+  frame_stack: 4
+  resize_shape: [84, 84]
+  shaped_rewards: true
+  normalize: true
+
+model:
+  architecture: "DeepMarioCNN"
+  features_dim: 512
+  net_arch_pi: [256, 128]
+  net_arch_vf: [256, 128]
+
+ppo:
+  timesteps: 1_000_000
+  n_envs: 4
+  learning_rate: 0.0002
+  n_steps: 512
+  batch_size: 256
+  n_epochs: 10
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  ent_coef: 0.02
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  target_kl: 0.01
+  seed: 42
+
+dqn:
+  timesteps: 500_000
+  learning_rate: 0.0001
+  buffer_size: 20_000
+  batch_size: 32
+  gamma: 0.99
+  target_update_interval: 1000
+  exploration_fraction: 0.1
+  exploration_final_eps: 0.05
+  seed: 42
+
+evaluation:
+  n_episodes: 100
+  deterministic: true
+  checkpoint: "checkpoints/best.pt"
+
+logging:
+  tensorboard_log: "runs"
+  checkpoint_dir: "checkpoints"
+  log_dir: "logs"
+  eval_freq: 10_000
+  checkpoint_freq: 100_000

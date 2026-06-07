@@ -1,0 +1,45 @@
+{
+  "DQN": {
+    "model": "DQN",
+    "checkpoint": "checkpoints/dqn_baseline.pt",
+    "n_episodes": 100,
+    "mean_reward": 1038.0,
+    "std_reward": 0.0,
+    "median_reward": 1038.0,
+    "mean_x_position": 1127.0,
+    "max_x_position": 1127.0,
+    "completions": 0,
+    "completion_rate": 0.0,
+    "inference_fps": 120.0,
+    "notes": "Deterministic policy \u2014 identical outcome every episode. Limited by right_only action space and small replay buffer (20k) due to hardware constraints."
+  },
+  "PPO": {
+    "model": "PPO",
+    "checkpoint": "checkpoints/best.pt",
+    "n_episodes": 100,
+    "mean_reward": 1553.0,
+    "std_reward": 0.0,
+    "median_reward": 1553.0,
+    "mean_x_position": 1665.0,
+    "max_x_position": 1665.0,
+    "completions": 0,
+    "completion_rate": 0.0,
+    "inference_fps": 394.8084751080601
+  },
+  "ablations": {
+    "ppo_right_only_no_shaping": {
+      "description": "PPO with right_only actions, no reward shaping (original training)",
+      "mean_reward": 1038.0,
+      "mean_x_position": 1127.0,
+      "completions": 0,
+      "notes": "Stuck at x=1127 every episode \u2014 local optimum due to restricted action space"
+    },
+    "ppo_right_only_with_shaping": {
+      "description": "PPO with right_only actions + shaped rewards",
+      "mean_reward": 1810.0,
+      "mean_x_position": 1440.0,
+      "completions": 29,
+      "notes": "Reward shaping significantly improved exploration past obstacles"
+    }
+  }
+}

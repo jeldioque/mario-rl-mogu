@@ -1,0 +1,30 @@
+# Core RL
+stable-baselines3==2.3.2
+gymnasium==0.29.1
+
+# Mario environment
+gym-super-mario-bros==7.4.0
+nes-py==8.2.1
+
+# Deep learning (CUDA 12.x compatible — matches modern WSL setups)
+torch==2.2.2
+torchvision==0.17.2
+
+# CV / preprocessing
+opencv-python==4.9.0.80
+numpy==1.26.4
+
+# Plotting & evaluation
+matplotlib==3.8.4
+pandas==2.2.1
+seaborn==0.13.2
+tensorboard==2.16.2
+
+# Notebook
+jupyter==1.0.0
+ipykernel==6.29.4
+
+# Utilities
+tqdm==4.66.2
+imageio==2.34.1
+imageio-ffmpeg==0.4.9
